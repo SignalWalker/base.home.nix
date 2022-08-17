@@ -24,8 +24,8 @@ in {
   };
   config = {
     home.file = lib.mkMerge [
-      (mapAttrs' (name: file: lib.nameValuePair "${xcfg.userDirs.templates}/${name}" file) xcfg.userDirs.templateFile)
-      (mapAttrs' (name: file: lib.nameValuePair "${xcfg.binHome}/${name}" file) xcfg.binFile)
+      (lib.mapAttrs' (name: file: lib.nameValuePair "${xcfg.userDirs.templates}/${name}" file) xcfg.userDirs.templateFile)
+      (lib.mapAttrs' (name: file: lib.nameValuePair "${xcfg.binHome}/${name}" file) xcfg.binFile)
     ];
     home.sessionPath = [
       xcfg.binHome
