@@ -3,26 +3,33 @@ inputs @ {
   pkgs,
   lib,
   ...
-}: {
-  options.xdg.userDirs.templateFile = with lib;
-    mkOption {
-      type = types.attrsOf (types.submodule {
-        options = {
-          text = mkOption {type = types.str;};
-          target = mkOption {type = types.str;};
-        };
-      });
+}: let
+  xcfg = config.xdg;
+in {
+  options.xdg = with lib; let
+    fileType = config.lib.fileType;
+  in {
+    userDirs.templateFile = mkOption {
+      type = fileType "<varname>xdg.userDirs.templates</varname>" config.xdg.userDirs.templates;
       default = {};
     };
+    binHome = mkOption {
+      type = types.path;
+      default = "${config.home.homeDirectory}/.local/bin";
+    };
+    binFile = mkOption {
+      type = fileType "<varname>xdg.binHome</varname>" config.xdg.binHome;
+      default = {};
+    };
+  };
   config = {
-    home.file =
-      lib.mapAttrs'
-      (name: file:
-        lib.nameValuePair "${config.xdg.userDirs.templates}/${name}" (file
-          // {
-            target = "${config.xdg.userDirs.templates}/${file.target}";
-          }))
-      config.xdg.userDirs.templateFile;
+    home.file = lib.mkMerge [
+      (mapAttrs' (name: file: lib.nameValuePair "${xcfg.userDirs.templates}/${name}" file) xcfg.userDirs.templateFile)
+      (mapAttrs' (name: file: lib.nameValuePair "${xcfg.binHome}/${name}" file) xcfg.binFile)
+    ];
+    home.sessionPath = [
+      xcfg.binHome
+    ];
     xdg = let
       home = config.home.homeDirectory;
     in {
