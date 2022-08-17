@@ -35,13 +35,7 @@
       homeManagerModules.default = let
         stateVersion = "22.11";
       in
-        {
-          lib,
-          options,
-          config,
-          specialArgs,
-          modulesPath,
-        }: {
+        {lib, ...}: {
           options = with lib; {
             # signal.base.enable = (mkEnableOption "base configuration") // {default = true;};
             system.isNixOS = (mkEnableOption "allows configuration specific to NixOS systems") // {default = true;};
@@ -57,7 +51,8 @@
       homeConfigurations =
         mapAttrs (system: pkgs: {
           default = hlib.genHomeConfiguration {
-            inherit pkgs inputs;
+            inherit pkgs;
+            modules = [self.homeManagerModules.default];
           };
         })
         nixpkgsFor;
