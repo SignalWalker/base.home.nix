@@ -11,7 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     homelib = {
-      url = github:signalwalker/homelib.nix;
+      url = github:signalwalker/lib.home.nix;
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.alejandra.follows = "alejandra";
     };
