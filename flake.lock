@@ -114,16 +114,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1660757341,
-        "narHash": "sha256-qjhQBIFEEd6Af774tYSPzScMzuH/nQBeQu6qz4cuPeg=",
+        "lastModified": 1660757688,
+        "narHash": "sha256-Flslo6eFhcNRK1RZij8h3srBxH60GNBFWeR83PXwOUY=",
         "owner": "signalwalker",
-        "repo": "homelib.nix",
-        "rev": "f881b29230966095eeb4afcb81e0d531f9a14b07",
+        "repo": "lib.home.nix",
+        "rev": "6e9060d0809d2aa03cb46b1a4bfebe10714810df",
         "type": "github"
       },
       "original": {
         "owner": "signalwalker",
-        "repo": "homelib.nix",
+        "repo": "lib.home.nix",
         "type": "github"
       }
     },
