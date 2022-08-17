@@ -1,6 +1,7 @@
 inputs @ {
   config,
   pkgs,
+  lib,
   ...
 }: {
   options.xdg.userDirs.templateFile = with lib;
@@ -15,22 +16,22 @@ inputs @ {
     };
   config = {
     home.file =
-      std.mapAttrs'
+      lib.mapAttrs'
       (name: file:
-        std.nameValuePair "${config.xdg.userDirs.templates}/${name}" (file
+        lib.nameValuePair "${config.xdg.userDirs.templates}/${name}" (file
           // {
             target = "${config.xdg.userDirs.templates}/${file.target}";
           }))
       config.xdg.userDirs.templateFile;
-    xdg = {
+    xdg = let
+      home = config.home.homeDirectory;
+    in {
       enable = true;
-      cacheHome = ~/.cache;
-      configHome = ~/.config;
-      stateHome = ~/.local/state;
-      dataHome = ~/.local/share;
-      userDirs = let
-        home = config.home.homeDirectory;
-      in {
+      cacheHome = "${home}/.cache";
+      configHome = "${home}/.config";
+      stateHome = "${home}/.local/state";
+      dataHome = "${home}/.local/share";
+      userDirs = {
         enable = true;
         createDirectories = true;
         desktop = "${home}/desktop";

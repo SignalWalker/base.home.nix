@@ -1,9 +1,10 @@
 inputs @ {
   config,
   pkgs,
+  lib,
   ...
 }: {
-  imports = config.lib.signal.fs.listFiles ./programs;
+  imports = lib.signal.fs.listFiles ./programs;
   config = {
     home.packages = with pkgs; [
       btop

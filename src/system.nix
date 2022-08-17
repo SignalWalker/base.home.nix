@@ -1,7 +1,8 @@
 inputs @ {
   config,
   pkgs,
+  lib,
   ...
 }: {
-  imports = config.lib.signal.fs.listFiles ./system;
+  imports = lib.signal.fs.listFiles ./system;
 }

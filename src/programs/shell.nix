@@ -1,12 +1,12 @@
 {
   config,
   pkgs,
-  utils,
+  lib,
   ...
 }: let
   prg = config.programs;
 in {
-  imports = utils.listNix ./shell;
+  imports = lib.signal.fs.listFiles ./shell;
 
   config = {
     home.packages = with pkgs; [
