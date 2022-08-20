@@ -14,6 +14,7 @@
       url = github:signalwalker/nix.home.lib;
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.alejandra.follows = "alejandra";
+      inputs.home-manager.follows = "home-manager";
     };
   };
   outputs = inputs @ {
