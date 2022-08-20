@@ -28,10 +28,12 @@
       hlib = homelib.lib;
       nixpkgsFor = hlib.genNixpkgsFor {
         inherit nixpkgs;
-        overlays = [];
+        overlays = system: self.lib.selectOverlays ["default" system];
       };
     in {
       formatter = std.mapAttrs (system: pkgs: pkgs.default) inputs.alejandra.packages;
+      lib.overlays = hlib.aggregateOverlays (attrValues (removeAttrs inputs ["nixpkgs" "alejandra"]));
+      lib.selectOverlays = hlib.selectOverlays' self;
       homeManagerModules.default = let
         stateVersion = "22.11";
       in
