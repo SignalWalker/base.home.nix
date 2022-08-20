@@ -2,12 +2,14 @@ inputs @ {
   config,
   pkgs,
   lib,
+  options,
   ...
 }: let
+  std = pkgs.lib;
   xcfg = config.xdg;
 in {
   options.xdg = with lib; let
-    fileType = config.lib.fileType;
+    fileType = config.lib.hm.types.file;
   in {
     userDirs.templateFile = mkOption {
       type = fileType "<varname>xdg.userDirs.templates</varname>" config.xdg.userDirs.templates;
@@ -22,10 +24,17 @@ in {
       default = {};
     };
   };
+  imports = [];
   config = {
+    lib.hm.types.file =
+      (import "${config.signal.base.flakeInputs.home-manager}/modules/lib/file-type.nix" {
+        inherit (config.home) homeDirectory;
+        inherit lib pkgs;
+      })
+      .fileType;
     home.file = lib.mkMerge [
-      (lib.mapAttrs' (name: file: lib.nameValuePair "${xcfg.userDirs.templates}/${name}" file) xcfg.userDirs.templateFile)
-      (lib.mapAttrs' (name: file: lib.nameValuePair "${xcfg.binHome}/${name}" file) xcfg.binFile)
+      (std.mapAttrs' (name: file: std.nameValuePair "${xcfg.userDirs.templates}/${name}" file) xcfg.userDirs.templateFile)
+      (std.mapAttrs' (name: file: std.nameValuePair "${xcfg.binHome}/${name}" file) xcfg.binFile)
     ];
     home.sessionPath = [
       xcfg.binHome

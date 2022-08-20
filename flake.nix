@@ -11,7 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     homelib = {
-      url = github:signalwalker/lib.home.nix;
+      url = github:signalwalker/nix.home.lib;
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.alejandra.follows = "alejandra";
     };
@@ -37,6 +37,10 @@
       in
         {lib, ...}: {
           options = with lib; {
+            signal.base.flakeInputs = mkOption {
+              type = types.attrsOf types.anything;
+              default = inputs;
+            };
             # signal.base.enable = (mkEnableOption "base configuration") // {default = true;};
             system.isNixOS = (mkEnableOption "allows configuration specific to NixOS systems") // {default = true;};
           };
