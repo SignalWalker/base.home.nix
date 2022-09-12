@@ -4,5 +4,5 @@ inputs @ {
   lib,
   ...
 }: {
-  imports = lib.signal.fs.listFiles ./system;
+  imports = lib.signal.fs.path.listFilePaths ./system;
 }

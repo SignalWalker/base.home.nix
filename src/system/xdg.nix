@@ -27,7 +27,7 @@ in {
   imports = [];
   config = {
     lib.hm.types.file =
-      (import "${config.signal.base.flakeInputs.home-manager}/modules/lib/file-type.nix" {
+      (import "${config.signal.base.homeManagerSrc}/modules/lib/file-type.nix" {
         inherit (config.home) homeDirectory;
         inherit lib pkgs;
       })

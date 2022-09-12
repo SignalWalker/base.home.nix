@@ -6,7 +6,7 @@
 }: let
   prg = config.programs;
 in {
-  imports = lib.signal.fs.listFiles ./shell;
+  imports = lib.signal.fs.path.listFilePaths ./shell;
 
   config = {
     home.packages = with pkgs; [

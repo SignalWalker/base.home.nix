@@ -4,7 +4,7 @@ inputs @ {
   lib,
   ...
 }: {
-  imports = lib.signal.fs.listFiles ./systemd;
+  imports = lib.signal.fs.path.listFilePaths ./systemd;
   config = {
     systemd.user.systemctlPath =
       if config.system.isNixOS
