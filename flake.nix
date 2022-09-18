@@ -48,7 +48,10 @@
           };
         };
       };
-      homeConfigurations = home.configuration.fromFlake { flake = self; flakeName = "home.base"; };
+      homeConfigurations = home.configuration.fromFlake {
+        flake = self;
+        flakeName = "home.base";
+      };
       packages = home.package.fromHomeConfigurations self.homeConfigurations;
       apps = home.app.fromHomeConfigurations self.homeConfigurations;
     };
