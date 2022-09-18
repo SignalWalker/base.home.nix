@@ -33,12 +33,12 @@
       formatter = std.mapAttrs (system: pkgs: pkgs.default) inputs.alejandra.packages;
       signalModules.default = {
         name = "home.base.default";
-        dependencies = signal.dependency.default.fromInputs {
-          inherit inputs;
+        dependencies = signal.flake.set.toDependencies {
+          flakes = inputs;
           filter = ["alejandra"];
         };
         outputs = dependencies: {
-          homeManagerModules.default = {...}: {
+          homeManagerModules = {...}: {
             imports = [./home-manager.nix];
             config = {
               home.stateVersion = "22.11";
@@ -48,8 +48,8 @@
           };
         };
       };
-      homeConfigurations = home.genConfigurations self;
-      packages = home.genActivationPackages self.homeConfigurations;
-      apps = home.genActivationApps self.homeConfigurations;
+      homeConfigurations = home.configuration.fromFlake { flake = self; flakeName = "home.base"; };
+      packages = home.package.fromHomeConfigurations self.homeConfigurations;
+      apps = home.app.fromHomeConfigurations self.homeConfigurations;
     };
 }
