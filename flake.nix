@@ -42,8 +42,8 @@
             imports = [./home-manager.nix];
             config = {
               home.stateVersion = "22.11";
-              lib.signal = dependencies.homelib.input.lib;
-              signal.base.homeManagerSrc = dependencies.home-manager.input;
+              lib.signal = dependencies.homelib.lib;
+              signal.base.homeManagerSrc = dependencies.home-manager;
             };
           };
         };
