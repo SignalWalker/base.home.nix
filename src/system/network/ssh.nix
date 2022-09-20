@@ -1,11 +1,20 @@
 {
   config,
   pkgs,
+  lib,
   ...
-}: {
+}:
+with builtins; let
+  std = pkgs.lib;
+in {
+  options = with lib; {};
+  imports = [];
   config = {
     home.packages = with pkgs; [
       mosh
+    ];
+    systemd.user.tmpfiles.rules = [
+      "D %t/ssh 0700 - -"
     ];
     programs.ssh = {
       enable = true;
