@@ -15,17 +15,17 @@ in {
       package = pkgs.xremap;
       services = {
         "main" = {
-          watch.config = false;
+          watch.configFile = false;
           watch.devices = true;
           watch.ignore = [];
           devices = [];
-          config = {
+          settings = {
             modmap = [];
             keymap = [];
           };
         };
       };
-      configurations = mapAttrs (name: service: service.config) config.services.xremap.services;
+      # configurations = mapAttrs (name: service: service.config) config.services.xremap.services;
     };
   };
 }
