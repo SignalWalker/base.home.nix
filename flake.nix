@@ -16,6 +16,10 @@
       inputs.alejandra.follows = "alejandra";
       inputs.home-manager.follows = "home-manager";
     };
+    kmonad = {
+      url = github:kmonad/kmonad?dir=nix;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs @ {
     self,

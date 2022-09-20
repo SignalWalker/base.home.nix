@@ -68,11 +68,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1663328500,
-        "narHash": "sha256-7n+J/exp8ky4dmk02y5a9R7CGmJvHpzrHMzfEkMtSWA=",
+        "lastModified": 1663629861,
+        "narHash": "sha256-CjfQUyPfG/hkE4jnMcTvVJ0ubc84u8ySruZL+emXMjw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5427f3d1f0ea4357cd4af0bffee7248d640c6ffc",
+        "rev": "41790ba656bafc023f48ccdbbe7816d30fd52d76",
         "type": "github"
       },
       "original": {
@@ -94,11 +94,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1663527595,
-        "narHash": "sha256-nj2+RFq1ppcVRd1m4Z5jy7NUqrjwR0SK1XCRP9lZh0c=",
+        "lastModified": 1663634872,
+        "narHash": "sha256-NMdT5PRRgUYB7GeT/2Qqy7GdoQjOXRnjZumVBcWblGo=",
         "owner": "signalwalker",
         "repo": "nix.home.lib",
-        "rev": "f2501dec48144a3b8438caa530151a9a4e8774aa",
+        "rev": "8a1a7afc22bacd1fd448c7a010774c678903ca31",
         "type": "github"
       },
       "original": {
@@ -107,13 +107,35 @@
         "type": "github"
       }
     },
+    "kmonad": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "nix",
+        "lastModified": 1663565216,
+        "narHash": "sha256-S6m7utTGclQL93YtX2KWK8qaaaBDNs6UYxrBsz1w9s0=",
+        "owner": "kmonad",
+        "repo": "kmonad",
+        "rev": "cbdace2bb7b27e47c2397e662265a28a1030b7c7",
+        "type": "github"
+      },
+      "original": {
+        "dir": "nix",
+        "owner": "kmonad",
+        "repo": "kmonad",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1663491030,
-        "narHash": "sha256-MVsfBhE9US5DvLtBAaTRjwYdv1tLO8xjahM8qLXTgTo=",
+        "lastModified": 1663578619,
+        "narHash": "sha256-kNgJXZIr4pi2NbDUfjj4APa+LlCmRUM4Ly2Xf70PVaw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "767542707d394ff15ac1981e903e005ba69528b5",
+        "rev": "a13d59408da1108fc6c9ffe4750ab7a33c581d24",
         "type": "github"
       },
       "original": {
@@ -128,6 +150,7 @@
         "alejandra": "alejandra",
         "home-manager": "home-manager",
         "homelib": "homelib",
+        "kmonad": "kmonad",
         "nixpkgs": "nixpkgs"
       }
     },
