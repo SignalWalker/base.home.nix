@@ -16,9 +16,11 @@
       inputs.alejandra.follows = "alejandra";
       inputs.home-manager.follows = "home-manager";
     };
-    kmonad = {
-      url = github:kmonad/kmonad?dir=nix;
+    # keyboard
+    xremap = {
+      url = github:signalwalker/xremap;
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.alejandra.follows = "alejandra";
     };
   };
   outputs = inputs @ {
