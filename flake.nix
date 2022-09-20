@@ -16,12 +16,6 @@
       inputs.alejandra.follows = "alejandra";
       inputs.home-manager.follows = "home-manager";
     };
-    # keyboard
-    xremap = {
-      url = github:signalwalker/xremap;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.alejandra.follows = "alejandra";
-    };
   };
   outputs = inputs @ {
     self,
