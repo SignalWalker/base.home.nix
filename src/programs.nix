@@ -11,8 +11,12 @@ inputs @ {
     ];
 
     programs.gpg = {
-      enable = true;
+      enable = false;
       homedir = "${config.xdg.configHome}/gnupg";
+    };
+
+    systemd.user.sessionVariables = lib.mkIf (!config.programs.gpg.enable) {
+      "GNUPGHOME" = config.programs.gpg.homedir;
     };
 
     programs.info.enable = true;
