@@ -11,7 +11,7 @@ inputs @ {
     ];
 
     programs.gpg = {
-      enable = false;
+      enable = config.system.isNixOS;
       homedir = "${config.xdg.configHome}/gnupg";
     };
 

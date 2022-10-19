@@ -65,6 +65,8 @@ in {
           XDG_SOURCE_DIR = "${home}/src";
           XDG_GAMES_DIR = "${home}/games";
           XDG_BOOKS_DIR = "${home}/books";
+          XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/screenshots";
+          XDG_WALLPAPERS_DIR = "${config.xdg.userDirs.pictures}/wallpapers";
         };
       };
     };
