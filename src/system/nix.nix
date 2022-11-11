@@ -10,7 +10,7 @@
       allowUnsupportedSystem = true;
     };
     nix = {
-      package = pkgs.nix;
+      # package = pkgs.nix;
       settings = {
         auto-optimise-store = true;
         show-trace = true;
