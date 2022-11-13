@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   config = {
@@ -10,7 +11,7 @@
       allowUnsupportedSystem = true;
     };
     nix = {
-      # package = pkgs.nix;
+      package = lib.mkDefault pkgs.nix;
       settings = {
         auto-optimise-store = true;
         show-trace = true;
