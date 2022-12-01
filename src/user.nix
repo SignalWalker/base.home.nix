@@ -1,30 +1,15 @@
-inputs @ {
+{
   config,
   pkgs,
-  profile,
   lib,
   ...
-}: {
+}:
+with builtins; let
+  std = pkgs.lib;
+in {
   options = with lib; {};
-  imports = [];
-  config = {
-    accounts.email.accounts = {
-      primary = {
-        address = "ashurstwalker@gmail.com";
-        flavor = "gmail.com";
-        primary = true;
-      };
-      secondary = {
-        address = "protomith@gmail.com";
-        flavor = "gmail.com";
-      };
-      personal = {
-        address = "ash@ashwalker.net";
-      };
-      business = {
-        address = "signalgarden@gmail.com";
-        flavor = "gmail.com";
-      };
-    };
-  };
+  disabledModules = [];
+  imports = lib.signal.fs.path.listFilePaths ./user;
+  config = {};
+  meta = {};
 }
