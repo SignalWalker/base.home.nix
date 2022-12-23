@@ -48,7 +48,7 @@ in {
       stateHome = "${home}/.local/state";
       dataHome = "${home}/.local/share";
       systemDirs = {
-        data = std.optionals (config.system.isNixOS or false) ["${home}/.nix-profile/share"];
+        data = ["${home}/.nix-profile/share"];
       };
       userDirs = {
         enable = true;
