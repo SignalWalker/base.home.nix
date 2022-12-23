@@ -22,7 +22,7 @@ in {
       default = email.git;
     };
     thunderbird = {
-      enable = (mkEnableOption "thunderbird integration") // { default = config.programs.thunderbird.enable; };
+      enable = (mkEnableOption "thunderbird integration") // {default = config.programs.thunderbird.enable;};
     };
   };
   imports = [];
