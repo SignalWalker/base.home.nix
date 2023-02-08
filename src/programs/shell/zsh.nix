@@ -55,7 +55,7 @@ in {
     # }
     # export FZF_DEFAULT_COMMAND='${pkgs.fd}/bin/fd --type f'
     initExtra = ''
-      export LS_COLORS=$(${pkgs.vivid}/bin/vivid generate gruvbox-dark-hard)
+      # export LS_COLORS=$(${pkgs.vivid}/bin/vivid generate gruvbox-dark-hard)
 
       zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
       zstyle ':completion:*:descriptions' format '[%d]'

@@ -16,7 +16,7 @@ with builtins; {
       add_newline = false;
       right_format = "$time";
       sudo = rec {
-        disabled = false;
+        disabled = true;
         symbol = "⚿ ";
         format = "\\[${symbol}\\]";
       };
@@ -188,13 +188,20 @@ with builtins; {
       };
 
       nim = rec {
-        symbol = " ";
+        symbol = "";
         format = "\\[[${symbol}($version)]($style)\\]";
       };
 
       nix_shell = rec {
-        symbol = " ";
-        format = "\\[[${symbol}$state( \\($name\\))]($style)\\]";
+        symbol = "";
+        pure_msg = "";
+        impure_msg = "\\(impure\\)";
+        format = "\\[[${symbol}$name$state]($style)\\]";
+      };
+
+      guix_shell = rec {
+        symbol = "🐃";
+        format = "\\[[${symbol}]($style)\\]";
       };
 
       nodejs = rec {

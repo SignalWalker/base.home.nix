@@ -73,10 +73,14 @@ in {
       enable = true;
     };
 
+    systemd.user.sessionVariables = {
+      MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    };
+
     programs.fzf = {
       enable = true;
       enableBashIntegration = true;
-      enableFishIntegration = prg.fish.enable;
+      enableFishIntegration = false; # using a special fancy plugin instead
       enableZshIntegration = prg.zsh.enable;
       defaultCommand = "fd --type f";
       fileWidgetCommand = "fd --type f --hidden --follow --exclude '.git'";

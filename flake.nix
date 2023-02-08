@@ -16,6 +16,11 @@
       inputs.alejandra.follows = "alejandra";
       inputs.home-manager.follows = "home-manager";
     };
+    # shell
+    fishFzf = {
+      url = "github:PatrickF1/fzf.fish";
+      flake = false;
+    };
   };
   outputs = inputs @ {
     self,
@@ -44,6 +49,9 @@
               home.stateVersion = "22.11";
               lib.signal = dependencies.homelib.lib;
               signal.base.homeManagerSrc = dependencies.home-manager;
+              programs.fish.pluginSources = with dependencies; {
+                fzf = fishFzf;
+              };
             };
           };
         };
