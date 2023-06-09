@@ -12,7 +12,7 @@ in {
     fileType = config.lib.hm.types.file;
   in {
     userDirs.templateFile = mkOption {
-      type = fileType "<varname>xdg.userDirs.templates</varname>" config.xdg.userDirs.templates;
+      type = fileType "<varname>xdg.userDirs.templates</varname>" "" config.xdg.userDirs.templates;
       default = {};
     };
     binHome = mkOption {
@@ -20,7 +20,7 @@ in {
       default = "${config.home.homeDirectory}/.local/bin";
     };
     binFile = mkOption {
-      type = fileType "<varname>xdg.binHome</varname>" config.xdg.binHome;
+      type = fileType "<varname>xdg.binHome</varname>" "" config.xdg.binHome;
       default = {};
     };
   };
