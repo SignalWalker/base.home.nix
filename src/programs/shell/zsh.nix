@@ -16,7 +16,7 @@ in {
     enableVteIntegration = true;
     # must be false for fzf-tab to work
     enableAutosuggestions = false;
-    enableSyntaxHighlighting = false;
+    syntaxHighlighting.enable = true;
     autocd = true;
     history = {
       path = "${config.xdg.dataHome}/zsh/zsh_history";
