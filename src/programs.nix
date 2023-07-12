@@ -8,6 +8,8 @@ inputs @ {
   config = {
     home.packages = with pkgs; [
       btop
+      procs
+      du-dust
     ];
 
     programs.info.enable = true;
