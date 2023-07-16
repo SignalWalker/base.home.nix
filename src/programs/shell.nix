@@ -86,5 +86,35 @@ in {
       fileWidgetCommand = "fd --type f --hidden --follow --exclude '.git'";
       changeDirWidgetCommand = "fd --type d --hidden --follow --exclude '.git'";
     };
+
+    # command history
+    programs.atuin = {
+      enable = true;
+      settings = {
+        db_path = "${config.xdg.dataHome}/atuin/history.db";
+        key_path = "${config.xdg.dataHome}/atuin/key";
+        session_path = "${config.xdg.dataHome}/atuin/session";
+        dialect = "us";
+        auto_sync = true;
+        update_check = false;
+        sync_address = "https://atuin.ashwalker.net";
+        sync_frequency = "1h";
+        search_mode = "fuzzy";
+        filter_mode = "global";
+        style = "auto";
+        exit_mode = "return-original";
+        inline_height = 8;
+      };
+    };
+
+    # programs.nix-index = {
+    #   enable = true;
+    # };
+    # programs.zsh.initExtra = ''
+    #   source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
+    # '';
+    # programs.bash.initExtra = ''
+    #   source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
+    # '';
   };
 }

@@ -15,10 +15,16 @@ with builtins; {
     settings = {
       add_newline = false;
       right_format = "$time";
+
+      fill = {
+        symbol = "-";
+        style = "bold black";
+      };
+
       sudo = rec {
         disabled = true;
         symbol = "⚿ ";
-        format = "\\[${symbol}\\]";
+        format = "\\[$symbol\\]";
       };
 
       time = {
@@ -37,7 +43,7 @@ with builtins; {
       memory_usage = rec {
         disabled = false;
         symbol = " ";
-        format = "\\[${symbol}[$ram( | $swap)]($style)\\]";
+        format = "\\[$symbol[$ram( | $swap)]($style)\\]";
       };
 
       directory = {
@@ -84,9 +90,9 @@ with builtins; {
 
       ### SPECIFIC
 
-      aws = rec {
+      aws = {
         symbol = "  ";
-        format = "\\[[${symbol}($profile)(\\($region\\))(\\[$duration\\])]($style)\\]";
+        format = "\\[[$symbol($profile)(\\($region\\))(\\[$duration\\])]($style)\\]";
       };
 
       cmake = {
@@ -97,41 +103,41 @@ with builtins; {
         format = "\\[[$symbol($version)]($style)\\]";
       };
 
-      conda = rec {
+      conda = {
         symbol = " ";
-        format = "\\[[${symbol}$environment]($style)\\]";
+        format = "\\[[$symbol$environment]($style)\\]";
       };
 
       crystal = {
         format = "\\[[$symbol($version)]($style)\\]";
       };
 
-      dart = rec {
+      dart = {
         symbol = " ";
-        format = "\\[[${symbol}($version)]($style)\\]";
+        format = "\\[[$symbol($version)]($style)\\]";
       };
 
       deno = {
         format = "\\[[$symbol($version)]($style)\\]";
       };
 
-      docker_context = rec {
+      docker_context = {
         symbol = " ";
-        format = "\\[[${symbol}$context]($style)\\]";
+        format = "\\[[$symbol$context]($style)\\]";
       };
 
       dotnet = {
         format = "\\[[$symbol($version)(🎯 $tfm)]($style)\\]";
       };
 
-      elixir = rec {
+      elixir = {
         symbol = " ";
-        format = "\\[[${symbol}($version \\(OTP $otp_version\\))]($style)\\]";
+        format = "\\[[$symbol($version \\(OTP $otp_version\\))]($style)\\]";
       };
 
-      elm = rec {
+      elm = {
         symbol = " ";
-        format = "\\[[${symbol}($version)]($style)\\]";
+        format = "\\[[$symbol($version)]($style)\\]";
       };
 
       erlang = {
@@ -142,37 +148,37 @@ with builtins; {
         format = "\\[[$symbol$account(@$domain)(\\($region\\))]($style)\\]";
       };
 
-      git_branch = rec {
+      git_branch = {
         symbol = " ";
-        format = "\\[[${symbol}$branch]($style)\\]";
+        format = "\\[[$symbol$branch]($style)\\]";
       };
 
       git_status = {
         format = "([\\[$all_status$ahead_behind\\]]($style))";
       };
 
-      golang = rec {
+      golang = {
         symbol = " ";
-        format = "\\[[${symbol}($version)]($style)\\]";
+        format = "\\[[$symbol($version)]($style)\\]";
       };
 
       helm = {
         format = "\\[[$symbol($version)]($style)\\]";
       };
 
-      hg_branch = rec {
+      hg_branch = {
         symbol = " ";
-        format = "\\[[${symbol}$branch]($style)\\]";
+        format = "\\[[$symbol$branch]($style)\\]";
       };
 
-      java = rec {
+      java = {
         symbol = " ";
-        format = "\\[[${symbol}($version)]($style)\\]";
+        format = "\\[[$symbol($version)]($style)\\]";
       };
 
-      julia = rec {
+      julia = {
         symbol = " ";
-        format = "\\[[${symbol}($version)]($style)\\]";
+        format = "\\[[$symbol($version)]($style)\\]";
       };
 
       kotlin = {
@@ -187,26 +193,26 @@ with builtins; {
         format = "\\[[$symbol($version)]($style)\\]";
       };
 
-      nim = rec {
+      nim = {
         symbol = "";
-        format = "\\[[${symbol}($version)]($style)\\]";
+        format = "\\[[$symbol($version)]($style)\\]";
       };
 
-      nix_shell = rec {
+      nix_shell = {
         symbol = "";
         pure_msg = "";
         impure_msg = "\\(impure\\)";
-        format = "\\[[${symbol}$name$state]($style)\\]";
+        format = "\\[[$symbol$name$state]($style)\\]";
       };
 
-      guix_shell = rec {
+      guix_shell = {
         symbol = "🐃";
-        format = "\\[[${symbol}]($style)\\]";
+        format = "\\[[$symbol]($style)\\]";
       };
 
-      nodejs = rec {
+      nodejs = {
         symbol = " ";
-        format = "\\[[${symbol}($version)]($style)\\]";
+        format = "\\[[$symbol($version)]($style)\\]";
       };
 
       ocaml = {
@@ -217,19 +223,19 @@ with builtins; {
         format = "\\[[$symbol$cloud(\\($project\\))]($style)\\]";
       };
 
-      package = rec {
+      package = {
         symbol = " ";
-        format = "\\[[${symbol}$version]($style)\\]";
+        format = "\\[[$symbol$version]($style)\\]";
       };
 
-      perl = rec {
+      perl = {
         symbol = " ";
-        format = "\\[[${symbol}($version)]($style)\\]";
+        format = "\\[[$symbol($version)]($style)\\]";
       };
 
       php = rec {
         symbol = " ";
-        format = "\\[[${symbol}($version)]($style)\\]";
+        format = "\\[[$symbol($version)]($style)\\]";
       };
 
       pulumi = {
@@ -240,33 +246,33 @@ with builtins; {
         format = "\\[[$symbol($version)]($style)\\]";
       };
 
-      python = rec {
+      python = {
         symbol = " ";
-        # format = "\\[[${symbol}${pyenv_prefix}(${version})(\\($virtualenv\\))]($style)\\]"
+        # format = "\\[[$symbol${pyenv_prefix}(${version})(\\($virtualenv\\))]($style)\\]"
       };
 
       red = {
         format = "\\[[$symbol($version)]($style)\\]";
       };
 
-      ruby = rec {
+      ruby = {
         symbol = " ";
-        format = "\\[[${symbol}($version)]($style)\\]";
+        format = "\\[[$symbol($version)]($style)\\]";
       };
 
-      rust = rec {
+      rust = {
         symbol = " ";
-        format = "\\[[${symbol}($version)]($style)\\]";
+        format = "\\[[$symbol($version)]($style)\\]";
       };
 
-      scala = rec {
+      scala = {
         symbol = " ";
-        format = "\\[[${symbol}($version)]($style)\\]";
+        format = "\\[[$symbol($version)]($style)\\]";
       };
 
-      swift = rec {
+      swift = {
         symbol = "ﯣ ";
-        format = "\\[[${symbol}($version)]($style)\\]";
+        format = "\\[[$symbol($version)]($style)\\]";
       };
 
       terraform = {

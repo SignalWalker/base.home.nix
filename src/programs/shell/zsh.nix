@@ -39,14 +39,19 @@ in {
         name = "fast-syntax-highlighting";
       }
       {
-        src = pkgs.zsh-history-substring-search.src;
-        name = "zsh-history-substring-search";
-      }
-      {
         src = pkgs.zsh-autosuggestions.src;
         name = "zsh-autosuggestions";
       }
     ];
+    historySubstringSearch = {
+      enable = !config.programs.atuin.enable;
+      searchUpKey = [
+        "$${terminfo[kcuu1]}"
+      ];
+      searchDownKey = [
+        "$${terminfo[kcud1]}"
+      ];
+    };
     # _fzf_compgen_path() {
     #     fd --hidden --follow --exclude '.git' . "$1"
     # }
@@ -54,6 +59,7 @@ in {
     #     fd --type d --hidden --follow --exclude '.git' . "$1"
     # }
     # export FZF_DEFAULT_COMMAND='${pkgs.fd}/bin/fd --type f'
+    defaultKeymap = "viins";
     initExtra = ''
       # export LS_COLORS=$(${pkgs.vivid}/bin/vivid generate gruvbox-dark-hard)
 
@@ -62,11 +68,14 @@ in {
       zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -hF --color=always $realpath'
       zstyle ':fzf-tab:complete:z:*' fzf-preview 'lsd -hF --color=always $realpath'
 
-      bindkey '^[[A' history-substring-search-up
-      bindkey '^[[B' history-substring-search-down
-      bindkey "^[[3~" delete-char
-      bindkey "^[[H" beginning-of-line
-      bindkey "^[[F" end-of-line
+      # bindkey "$${terminfo[kcuu1]}" history-substring-search-up
+      # bindkey "$${terminfo[kcud1]}" history-substring-search-down
+      # bindkey -M vicmd 'k' history-substring-search-up
+      # bindkey -M vicmd 'j' history-substring-search-down
+
+      bindkey "$${terminfo[kdch1]}" delete-char
+      bindkey "$${terminfo[khome]}" beginning-of-line
+      bindkey "$${terminfo[kend]}" end-of-line
     '';
   };
 }
