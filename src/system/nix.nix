@@ -5,11 +5,11 @@
   ...
 }: {
   config = {
-    nixpkgs.config = {
-      allowBroken = true;
-      allowUnfree = true;
-      allowUnsupportedSystem = true;
-    };
+    # nixpkgs.config = {
+    #   allowBroken = true;
+    #   allowUnfree = true;
+    #   allowUnsupportedSystem = true;
+    # };
     nix = {
       package = lib.mkDefault pkgs.nix;
       settings = {

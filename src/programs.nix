@@ -10,6 +10,7 @@ inputs @ {
       btop
       procs
       du-dust
+      calc
     ];
 
     programs.info.enable = true;

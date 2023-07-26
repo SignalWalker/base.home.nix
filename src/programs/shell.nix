@@ -97,7 +97,7 @@ in {
         dialect = "us";
         auto_sync = true;
         update_check = false;
-        sync_address = "https://atuin.ashwalker.net";
+        sync_address = "http://192.168.0.4:8398";
         sync_frequency = "1h";
         search_mode = "fuzzy";
         filter_mode = "global";
@@ -106,15 +106,5 @@ in {
         inline_height = 8;
       };
     };
-
-    # programs.nix-index = {
-    #   enable = true;
-    # };
-    # programs.zsh.initExtra = ''
-    #   source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
-    # '';
-    # programs.bash.initExtra = ''
-    #   source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
-    # '';
   };
 }
