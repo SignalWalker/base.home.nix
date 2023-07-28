@@ -47,11 +47,11 @@
     "fishFzf": {
       "flake": false,
       "locked": {
-        "lastModified": 1689114187,
-        "narHash": "sha256-Aqr6+DcOS3U1R8o9Mlbxszo5/Dy9viU4KbmRGXo95R8=",
+        "lastModified": 1690569122,
+        "narHash": "sha256-YjH+2p+1k/343GZ3m9Z9BdrdLsU+d7umRIq3zt0WQNI=",
         "owner": "PatrickF1",
         "repo": "fzf.fish",
-        "rev": "9876f5f74aab7f58b0359341dc26bf4a0f2e9021",
+        "rev": "883b78c8d7955b049f670a1e6ac74c0ea3d388ed",
         "type": "github"
       },
       "original": {
