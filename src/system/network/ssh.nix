@@ -31,6 +31,14 @@ in {
         "gitlab.com" = {
           user = "git";
         };
+        "home.ashwalker.net" = {
+          port = 22022;
+          user = "root";
+        };
+        "terra.home" = {
+          hostname = "192.168.0.4";
+          proxyJump = "home.ashwalker.net";
+        };
       };
     };
   };
