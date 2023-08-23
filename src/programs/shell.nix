@@ -11,7 +11,7 @@ in {
   config = {
     home.packages = with pkgs; [
       ripgrep
-      ripgrep-all
+      # ripgrep-all # build failure 2023-08-22
       fd
     ];
 
@@ -74,6 +74,7 @@ in {
     };
 
     systemd.user.sessionVariables = {
+      MANROFFOPT = "-c"; # fix formatting errors with $MANPAGER
       MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     };
 
@@ -97,7 +98,7 @@ in {
         dialect = "us";
         auto_sync = true;
         update_check = false;
-        sync_address = "http://192.168.0.4:8398";
+        sync_address = "http://atuin.sync.terra.ashwalker.net";
         sync_frequency = "1h";
         search_mode = "fuzzy";
         filter_mode = "global";
