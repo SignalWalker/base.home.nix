@@ -101,10 +101,13 @@ in {
         sync_address = "http://atuin.sync.terra.ashwalker.net";
         sync_frequency = "1h";
         search_mode = "fuzzy";
+        search_mode_shell_up_key_binding = "prefix";
         filter_mode = "global";
+        filter_mode_shell_up_key_binding = "host";
         style = "auto";
         exit_mode = "return-original";
         inline_height = 8;
+        enter_accept = true;
       };
     };
   };
