@@ -54,9 +54,9 @@ with builtins; {
 
       shell = {
         disabled = false;
-        fish_indicator = "";
+        fish_indicator = "󰈺";
         zsh_indicator = "↯";
-        ion_indicator = "⚝";
+        ion_indicator = "";
         nu_indicator = "ǂ";
       };
 

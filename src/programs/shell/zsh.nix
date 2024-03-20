@@ -52,13 +52,6 @@ in {
         "$${terminfo[kcud1]}"
       ];
     };
-    # _fzf_compgen_path() {
-    #     fd --hidden --follow --exclude '.git' . "$1"
-    # }
-    # _fzf_compgen_dir() {
-    #     fd --type d --hidden --follow --exclude '.git' . "$1"
-    # }
-    # export FZF_DEFAULT_COMMAND='${pkgs.fd}/bin/fd --type f'
     defaultKeymap = "viins";
     initExtra = ''
       # export LS_COLORS=$(${pkgs.vivid}/bin/vivid generate gruvbox-dark-hard)

@@ -10,10 +10,15 @@ in {
 
   config = {
     home.packages = with pkgs; [
-      ripgrep
-      # ripgrep-all # build failure 2023-08-22
       fd
     ];
+
+    programs.ripgrep = {
+      enable = true;
+      arguments = [
+        "--type-not=lock"
+      ];
+    };
 
     home.shellAliases = {
       ls = "lsd";
@@ -90,7 +95,11 @@ in {
 
     # command history
     programs.atuin = {
-      enable = true;
+      enable = true; # TODO :: https://github.com/atuinsh/atuin/issues/1661
+      enableBashIntegration = true;
+      enableFishIntegration = prg.fish.enable;
+      enableZshIntegration = prg.zsh.enable;
+      enableNushellIntegration = prg.nushell.enable;
       settings = {
         db_path = "${config.xdg.dataHome}/atuin/history.db";
         key_path = "${config.xdg.dataHome}/atuin/key";

@@ -21,6 +21,10 @@
       url = "github:PatrickF1/fzf.fish";
       flake = false;
     };
+    tokyonight = {
+      url = "github:folke/tokyonight.nvim";
+      flake = false;
+    };
   };
   outputs = inputs @ {
     self,
@@ -37,8 +41,18 @@
           home.stateVersion = "22.11";
           lib.signal = inputs.homelib.lib;
           signal.base.homeManagerSrc = inputs.home-manager;
-          programs.fish.pluginSources = {
-            fzf = inputs.fishFzf;
+          programs.fish = {
+            pluginSources = {
+              fzf = inputs.fishFzf;
+            };
+            themes = let
+              tk = "${inputs.tokyonight}/extras/fish_themes";
+            in {
+              tokyonight_day = "${tk}/tokyonight_day.theme";
+              tokyonight_moon = "${tk}/tokyonight_moon.theme";
+              tokyonight_night = "${tk}/tokyonight_night.theme";
+              tokyonight_storm = "${tk}/tokyonight_night.theme";
+            };
           };
         };
       };
