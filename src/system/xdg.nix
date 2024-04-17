@@ -1,12 +1,15 @@
 inputs @ {
   config,
+  osConfig,
   pkgs,
   lib,
   options,
   ...
 }: let
   std = pkgs.lib;
-  xcfg = config.xdg;
+  xdg = config.xdg;
+  userDirs = xdg.userDirs;
+  nix = osConfig.nix;
 in {
   options.xdg = with lib; let
     fileType = config.lib.hm.types.file;
@@ -33,12 +36,13 @@ in {
       })
       .fileType;
     home.file = lib.mkMerge [
-      (std.mapAttrs' (name: file: std.nameValuePair "${xcfg.userDirs.templates}/${name}" file) xcfg.userDirs.templateFile)
-      (std.mapAttrs' (name: file: std.nameValuePair "${xcfg.binHome}/${name}" file) xcfg.binFile)
+      (std.mapAttrs' (name: file: std.nameValuePair "${xdg.userDirs.templates}/${name}" file) xdg.userDirs.templateFile)
+      (std.mapAttrs' (name: file: std.nameValuePair "${xdg.binHome}/${name}" file) xdg.binFile)
     ];
     home.sessionPath = [
-      xcfg.binHome
+      xdg.binHome
     ];
+    home.preferXdgDirectories = true;
     xdg = let
       home = config.home.homeDirectory;
     in {
@@ -48,7 +52,10 @@ in {
       stateHome = "${home}/.local/state";
       dataHome = "${home}/.local/share";
       systemDirs = {
-        data = ["${home}/.nix-profile/share"];
+        data =
+          if nix.settings.use-xdg-base-directories
+          then ["${xdg.stateHome}/nix/profile"]
+          else ["${home}/.nix-profile"];
       };
       userDirs = {
         enable = true;
@@ -68,8 +75,8 @@ in {
           XDG_SOURCE_DIR = "${home}/src";
           XDG_GAMES_DIR = "${home}/games";
           XDG_BOOKS_DIR = "${home}/books";
-          XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/screenshots";
-          XDG_WALLPAPERS_DIR = "${config.xdg.userDirs.pictures}/wallpapers";
+          XDG_SCREENSHOTS_DIR = "${userDirs.pictures}/screenshots";
+          XDG_WALLPAPERS_DIR = "${userDirs.pictures}/wallpapers";
         };
       };
     };

@@ -31,6 +31,16 @@ in {
         "gitlab.com" = {
           user = "git";
         };
+        "git.ashwalker.net" = {
+          user = "forgejo";
+          hostname = "terra.ashwalker.net";
+        };
+        "hermes.lan" = {
+          user = "root";
+        };
+        "ashwalker.net" = {
+          hostname = "hermes.ashwalker.net";
+        };
       };
     };
   };
