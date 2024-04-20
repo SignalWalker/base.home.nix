@@ -15,7 +15,9 @@ in {
     enableCompletion = true;
     enableVteIntegration = true;
     # must be false for fzf-tab to work
-    enableAutosuggestions = false;
+    autosuggestion = {
+      enable = false;
+    };
     syntaxHighlighting.enable = true;
     autocd = true;
     history = {
