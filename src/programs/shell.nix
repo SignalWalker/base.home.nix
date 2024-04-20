@@ -5,6 +5,10 @@
   ...
 }: let
   prg = config.programs;
+  fish = prg.fish;
+  zsh = prg.zsh;
+  ion = prg.ion;
+  nu = prg.nushell;
 in {
   imports = lib.signal.fs.path.listFilePaths ./shell;
 
@@ -22,11 +26,32 @@ in {
     };
 
     home.shellAliases = {
-      ls = "lsd";
-      ll = "lsd -l";
-      lt = "lsd --tree";
-      la = "lsd -a";
-      lla = "lsd -la";
+      ls = "eza";
+      ll = "eza --long";
+      lt = "eza --tree";
+      la = "eza --all";
+      lla = "eza --long --all";
+    };
+
+    programs.eza = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = fish.enable;
+      enableZshIntegration = zsh.enable;
+      enableIonIntegration = ion.enable;
+      enableNushellIntegration = nu.enable;
+      git = true;
+      icons = true;
+      extraOptions = [
+        "--sort=extension"
+        "--group-directories-first"
+        # long view
+        "--header"
+        "--smart-group"
+        "--mounts"
+        "--extended"
+        "--time-style=+%Y-%m-%d %H:%M"
+      ];
     };
 
     programs.lsd = {
