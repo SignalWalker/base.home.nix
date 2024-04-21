@@ -6,6 +6,10 @@
 }:
 with builtins; let
   std = pkgs.lib;
+
+  fish = config.programs.fish;
+  zsh = config.programs.zsh;
+  nu = config.programs.nushell;
 in {
   options = with lib; {};
   disabledModules = [];
@@ -20,6 +24,13 @@ in {
       };
     };
     programs.nnn = {};
+    programs.yazi = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = fish.enable;
+      enableNushellIntegration = nu.enable;
+      enableZshIntegration = zsh.enable;
+    };
   };
   meta = {};
 }

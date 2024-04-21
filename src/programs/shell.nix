@@ -91,13 +91,17 @@ in {
 
     programs.zellij = {
       enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = fish.enable;
+      enableZshIntegration = zsh.enable;
     };
 
     programs.zoxide = {
       enable = true;
       enableBashIntegration = true;
-      enableFishIntegration = prg.fish.enable;
-      enableZshIntegration = prg.zsh.enable;
+      enableFishIntegration = fish.enable;
+      enableZshIntegration = zsh.enable;
+      enableNushellIntegration = nu.enable;
     };
 
     programs.bat = {
@@ -113,7 +117,7 @@ in {
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = false; # using a special fancy plugin instead
-      enableZshIntegration = prg.zsh.enable;
+      enableZshIntegration = zsh.enable;
       defaultCommand = "fd --type f";
       fileWidgetCommand = "fd --type f --hidden --follow --exclude '.git'";
       changeDirWidgetCommand = "fd --type d --hidden --follow --exclude '.git'";
@@ -123,9 +127,9 @@ in {
     programs.atuin = {
       enable = true; # TODO :: https://github.com/atuinsh/atuin/issues/1661
       enableBashIntegration = true;
-      enableFishIntegration = prg.fish.enable;
-      enableZshIntegration = prg.zsh.enable;
-      enableNushellIntegration = prg.nushell.enable;
+      enableFishIntegration = fish.enable;
+      enableZshIntegration = zsh.enable;
+      enableNushellIntegration = nu.enable;
       settings = {
         db_path = "${config.xdg.dataHome}/atuin/history.db";
         key_path = "${config.xdg.dataHome}/atuin/key";
