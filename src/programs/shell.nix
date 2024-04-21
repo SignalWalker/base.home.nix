@@ -14,9 +14,12 @@ in {
 
   config = {
     home.packages = with pkgs; [
-      fd
       rargs
     ];
+
+    programs.fd = {
+      enable = true;
+    };
 
     programs.ripgrep = {
       enable = true;
