@@ -94,9 +94,9 @@ in {
 
     programs.zellij = {
       enable = true;
-      enableBashIntegration = true;
-      enableFishIntegration = fish.enable;
-      enableZshIntegration = zsh.enable;
+      # enableBashIntegration = true;
+      # enableFishIntegration = fish.enable;
+      # enableZshIntegration = zsh.enable;
     };
 
     programs.zoxide = {
