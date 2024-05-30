@@ -20,6 +20,7 @@ in {
     };
     binHome = mkOption {
       type = types.path;
+      readOnly = true;
       default = "${config.home.homeDirectory}/.local/bin";
     };
     binFile = mkOption {
@@ -43,6 +44,7 @@ in {
       xdg.binHome
     ];
     home.preferXdgDirectories = true;
+
     xdg = let
       home = config.home.homeDirectory;
     in {
