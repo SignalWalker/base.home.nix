@@ -11,6 +11,7 @@ inputs @ {
       procs
       du-dust
       calc
+      killall
     ];
 
     programs.info.enable = true;
