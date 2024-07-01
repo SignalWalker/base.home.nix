@@ -12,6 +12,8 @@ inputs @ {
       du-dust
       calc
       killall
+      p7zip
+      unzip
     ];
 
     programs.info.enable = true;
